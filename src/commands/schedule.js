@@ -10,6 +10,7 @@ module.exports = {
 	minArgs: 5,
 	maxArgs: 5,
 	init: (client) => {
+		// Check for messages to be sent every 2 seconds. Recursive function.
 		const checkForPosts = async () => {
 			const query = {
 				date: {
@@ -17,20 +18,26 @@ module.exports = {
 				},
 			};
 
+			//Get results from database matching the current date time.
 			const results = await scheduledMessage.find(query);
 
+			//Iterate through the messages to be sent.
 			for (post of results) {
 				const { guildId, channelId, content } = post;
 
+				//If bot kicked out of server or server no longer exists, do nothing.
 				const guild = await client.guilds.fetch(guildId);
 				if (!guild) continue;
 
+				//If bot kicked out of server or channel no longer exists, do nothing.
 				const channel = guild.channels.cache.get(channelId);
 				if (!channel) continue;
 
+				//Send scheduled message to the required channel.
 				channel.send(content);
 			}
 
+			//Delete all the sent messages.
 			await scheduledMessage.deleteMany(query);
 
 			setTimeout(checkForPosts, 1000 * 2);
@@ -48,6 +55,7 @@ module.exports = {
 		//Remove the channel tag from args array
 		args.shift();
 
+		//Check if the date time provided is valid.
 		const [date, time, clockType, timezone] = args;
 
 		if (clockType !== "AM" && clockType !== "PM") {
@@ -69,6 +77,7 @@ module.exports = {
 			timezone,
 		);
 
+		//Collect the message to be scheduled.
 		message.reply("Please send the message you would like to schedule.");
 
 		const filter = (val) => {
@@ -91,6 +100,7 @@ module.exports = {
 
 			message.reply("Your message has been scheduled.");
 
+			//Save message to the database.
 			await new scheduledMessage({
 				date: targetDate.valueOf(),
 				content: collectedMessage,

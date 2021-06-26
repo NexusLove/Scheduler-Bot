@@ -1,4 +1,4 @@
-# `Captain Hook - Discord Message Scheduling Bot`
+## `Captain Hook - Discord Message Scheduling Bot`
 
 Captain Hook will send your scheduled messages to any channel set at any time and date.
 
