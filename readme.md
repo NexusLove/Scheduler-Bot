@@ -14,7 +14,7 @@ Captain Hook will send your scheduled messages to any channel set at any time an
 
 ### `Command`
 
--   !schedule <Channel Tag> <YYYY/MM/DD> <HH:MM> <"AM" or "PM"> <Timezone>
+-   !schedule `<Channel Tag> <YYYY/MM/DD> <HH:MM> <"AM" or "PM"> <Timezone>`
 -   In the next message, provide the content to be scheduled.
 
 Available Timezones: https://gist.github.com/AlexzanderFlores/d511a7c7e97b4c3ae60cb6e562f78300
