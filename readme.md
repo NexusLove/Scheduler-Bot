@@ -27,3 +27,7 @@ Bot is designed using discord.js. On using the schedule command, if correct argu
 
 -   Allow user to see scheduled messages.
 -   Allow user to edit/delete scheduled messages.
+
+### `Demo`
+[<img src="https://github.com/pri1311/Scheduler-Bot/blob/master/Videos/CaptainHook.mp4" width="50%">](https://github.com/pri1311/Scheduler-Bot/blob/master/Videos/CaptainHook.mp4)
+[<img src="https://github.com/pri1311/Scheduler-Bot/blob/master/Videos/ErrorHandling.mp4" width="50%">](https://github.com/pri1311/Scheduler-Bot/blob/master/Videos/ErrorHandling.mp4)
